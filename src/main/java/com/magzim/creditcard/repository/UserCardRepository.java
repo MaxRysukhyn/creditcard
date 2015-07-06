@@ -9,12 +9,16 @@ import java.util.List;
  */
 public interface UserCardRepository {
 
+    UserCard pay(UserCard card, int userId, int destinationCardId);
+
+    UserCard addFunds (UserCard card, int userId);
+
     //UserCard.user = null
-    UserCard save(UserCard userCard, int userId);
+    UserCard save(UserCard card, int userId);
 
-    boolean block(int id, int userId);
+    void block(UserCard card, int userId);
 
-    boolean unblock (int id, int userId);
+    void unblock (UserCard card, int userId);
 
     //null if not found
     UserCard get(int id, int userId);

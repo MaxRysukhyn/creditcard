@@ -1,6 +1,7 @@
 package com.magzim.creditcard.service;
 
 import com.magzim.creditcard.model.UserCard;
+import com.magzim.creditcard.util.exception.NotFoundException;
 
 import java.util.List;
 
@@ -9,15 +10,15 @@ import java.util.List;
  */
 public interface UserCardService {
 
-    UserCard save(UserCard userCard, int userId);
+    UserCard save(UserCard card, int userId);
 
-    boolean block(int id, int userId);
+    void block(UserCard card, int userId) throws NotFoundException;;
 
-    boolean unblock (int id, int userId);
+    void unblock (UserCard card, int userId) throws NotFoundException;;
 
-    UserCard update(UserCard userCard, int userId);
+    UserCard update(UserCard card, int userId) throws NotFoundException;;
 
-    UserCard get(int id, int userId);
+    UserCard get(int id, int userId) throws NotFoundException;;
 
     List<UserCard> getAll(int userId);
 

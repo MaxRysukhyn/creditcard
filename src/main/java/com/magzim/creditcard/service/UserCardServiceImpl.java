@@ -19,13 +19,13 @@ public class UserCardServiceImpl implements UserCardService {
     }
 
     @Override
-    public boolean block(int id, int userId) {
-        return repository.block(id, userId);
+    public void block(UserCard card, int userId) {
+        ExceptionUtil.check(repository.save(card, userId), card.getId());
     }
 
     @Override
-    public boolean unblock(int id, int userId) {
-        return unblock(id, userId);
+    public void unblock(UserCard card, int userId) {
+        ExceptionUtil.check(repository.save(card, userId), card.getId());
     }
 
     @Override
