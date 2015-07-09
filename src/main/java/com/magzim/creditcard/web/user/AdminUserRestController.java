@@ -3,16 +3,20 @@ package com.magzim.creditcard.web.user;
 import com.magzim.creditcard.LoggerWrapper;
 import com.magzim.creditcard.model.User;
 import com.magzim.creditcard.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
 /**
  * Created by max on 6/27/15.
  */
+@Controller
 public class AdminUserRestController {
 
     private static final LoggerWrapper LOG = LoggerWrapper.get(AdminUserRestController.class);
 
+    @Autowired
     private UserService service;
 
     public List<User> getAll() {

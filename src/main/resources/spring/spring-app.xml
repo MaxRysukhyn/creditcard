@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--<bean class="com.magzim.creditcard.repository.mock.MockUserRepositoryImpl" name="mockUserRepository"/>
+
+    <bean class="com.magzim.creditcard.repository.mock.MockUserCardRepositoryImpl" name="mockUserCardRepository"/>
+
+    <bean class="com.magzim.creditcard.serice.UserServiceImpl">
+            <property name="repository" ref="mockUserRepository"/>
+    </bean>
+
+    <bean class="com.magzim.creditcard.serice.UserCardServiceImpl">
+        <property name="repository" ref="mockUserCardRepository"/>
+
+    </bean>-->
+
+    <context:annotation-config/>
+
+    <context:component-scan base-package="com.magzim.**.repository"/>
+
+    <context:component-scan base-package="com.magzim.**.service"/>
+
+    <context:component-scan base-package="com.magzim.**.web"/>
+
+</beans>

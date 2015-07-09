@@ -10,6 +10,10 @@ import java.util.List;
  */
 public interface UserCardService {
 
+    void pay(UserCard card, int userId, int destinationCardId);
+
+    void addFunds (UserCard card, int userId);
+
     UserCard save(UserCard card, int userId);
 
     void block(UserCard card, int userId) throws NotFoundException;;

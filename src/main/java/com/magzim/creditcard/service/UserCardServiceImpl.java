@@ -3,15 +3,25 @@ package com.magzim.creditcard.service;
 import com.magzim.creditcard.model.UserCard;
 import com.magzim.creditcard.repository.UserCardRepository;
 import com.magzim.creditcard.util.exception.ExceptionUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by max on 7/1/15.
  */
+@Service
 public class UserCardServiceImpl implements UserCardService {
 
+    @Autowired
     private UserCardRepository repository;
+
+    @Override
+    public void pay(UserCard card, int userId, int destinationCardId) { ExceptionUtil.check(repository.save(card, userId), userId); };
+
+    @Override
+    public void addFunds (UserCard card, int userId) {  ExceptionUtil.check(repository.save(card, userId), userId); };
 
     @Override
     public UserCard save(UserCard userCard, int userId) {
