@@ -9,7 +9,8 @@ public class NamedEntity extends BaseEntity {
 
     public NamedEntity() {}
 
-    public NamedEntity(String name) {
+    public NamedEntity(Integer id, String name) {
+        super(id);
         this.name = name;
     }
 

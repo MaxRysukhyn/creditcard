@@ -5,6 +5,8 @@ import com.magzim.creditcard.model.User;
 import com.magzim.creditcard.repository.UserRepository;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.Collections;
 import java.util.List;
 
@@ -15,16 +17,27 @@ import java.util.List;
 public class MockUserRepositoryImpl implements UserRepository {
     public static final LoggerWrapper LOG = LoggerWrapper.get(MockUserRepositoryImpl.class);
 
-    @Override
-    public User save(User user) {
-        LOG.info("save " + user);
-        return user;
+    @PostConstruct
+    public void postConstruct() {
+        LOG.info("PostConstruct");
     }
+
+    @PreDestroy
+    public void preDestroy() {
+        LOG.info("PreDestroy");
+    }
+
 
     @Override
     public boolean delete(int id) {
         LOG.info("delete " + id);
-        return true;
+        return id != 0;
+    }
+
+    @Override
+    public User save(User user) {
+        LOG.info("save " + user);
+        return user;
     }
 
     @Override

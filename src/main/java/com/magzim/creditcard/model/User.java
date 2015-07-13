@@ -2,6 +2,7 @@ package com.magzim.creditcard.model;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.EnumSet;
 import java.util.Set;
 
 /**
@@ -19,15 +20,20 @@ public class User extends NamedEntity {
 
     private Set<Role> roles;
 
-    public User() {
+    public User(User u) {
+        this(u.getId(), u.getName(), u.getEmail(), u.getPassword(), u.isEnabled(), u.getRoles());
     }
 
-    public User(String email, String password, boolean enabled, Date registered, Set<Role> authorities) {
+    public User(Integer id, String name, String email, String password, boolean enabled, Role role, Role... roles) {
+        this(id, name, email, password, enabled, EnumSet.of(role, roles));
+    }
+
+    public User(Integer id, String name, String email, String password, boolean enabled, Set<Role> roles) {
+        super(id, name);
         this.email = email;
         this.password = password;
         this.enabled = enabled;
-        this.registered = registered;
-        this.roles = authorities;
+        this.roles = roles;
     }
 
     public String getEmail() {
