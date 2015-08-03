@@ -18,10 +18,12 @@ public class UserCardServiceImpl implements UserCardService {
     private UserCardRepository repository;
 
     @Override
-    public void pay(UserCard card, int userId, int destinationCardId) { ExceptionUtil.check(repository.save(card, userId), userId); };
+    public void pay(UserCard card, int userId, double amountPaid, int destinationCardId) {
+        ExceptionUtil.check(repository.save(card, userId), userId);
+    }
 
     @Override
-    public void addFunds (UserCard card, int userId) {  ExceptionUtil.check(repository.save(card, userId), userId); };
+    public void addFunds (UserCard card, int userId, double amountAdded) {  ExceptionUtil.check(repository.save(card, userId), userId); }
 
     @Override
     public UserCard save(UserCard userCard, int userId) {

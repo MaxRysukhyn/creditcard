@@ -10,15 +10,19 @@ import java.util.Set;
  */
 public class User extends NamedEntity {
 
-    private String email;
+    protected String email;
 
-    private String password;
+    protected String password;
 
-    private boolean enabled = true;
+    protected boolean enabled = true;
 
-    private Date registered = new Date();
+    protected Date registered;
 
-    private Set<Role> roles;
+    protected Set<Role> roles;
+
+    public User() {
+
+    }
 
     public User(User u) {
         this(u.getId(), u.getName(), u.getEmail(), u.getPassword(), u.isEnabled(), u.getRoles());
@@ -68,12 +72,12 @@ public class User extends NamedEntity {
 
     @Override
     public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
+        return "User (" +
+                "id=" + id +
+                ",name='" + name +
+                ", email='" + email +
                 ", enabled=" + enabled +
-                ", registered=" + registered +
-                '}';
+                ", roles=" + roles +
+                ')';
     }
 }

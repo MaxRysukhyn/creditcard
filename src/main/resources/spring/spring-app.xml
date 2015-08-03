@@ -12,18 +12,18 @@
 
     <bean class="com.magzim.creditcard.repository.mock.MockUserCardRepositoryImpl" name="mockUserCardRepository"/>
 
-    <bean class="com.magzim.creditcard.serice.UserServiceImpl">
+    <bean class="com.magzim.creditcard.service.UserServiceImpl">
             <property name="repository" ref="mockUserRepository"/>
     </bean>
 
-    <bean class="com.magzim.creditcard.serice.UserCardServiceImpl">
+    <bean class="com.magzim.creditcard.service.UserCardServiceImpl">
         <property name="repository" ref="mockUserCardRepository"/>
 
     </bean>-->
 
     <context:annotation-config/>
 
-    <context:component-scan base-package="com.magzim.**.repository"/>
+    <context:component-scan base-package="com.magzim.**.repository.jdbc"/>
 
     <context:component-scan base-package="com.magzim.**.service"/>
 

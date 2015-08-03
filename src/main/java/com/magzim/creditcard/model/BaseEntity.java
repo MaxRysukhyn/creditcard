@@ -1,11 +1,16 @@
 package com.magzim.creditcard.model;
 
+import com.magzim.creditcard.LoggerWrapper;
+
 /**
  * Created by max on 6/27/15.
  */
 public class BaseEntity {
+    protected static final LoggerWrapper LOG = LoggerWrapper.get(BaseEntity.class);
 
-    private Integer id;
+    public static final int START_SEQ = 1000;
+
+    protected Integer id;
 
     public BaseEntity() {
     }
@@ -23,4 +28,18 @@ public class BaseEntity {
     }
 
     public boolean isNew() {return (this.id == null); }
+
+    @Override
+    public boolean equals(Object o) {
+        if(this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BaseEntity that = (BaseEntity) o;
+        if (id == null || that.id == null) {
+            throw LOG.getIllegalStateException("Equals '" + this + "' and '" + that + "' with null id");
+        }
+        return id.equals(that.id);
+    }
+
+    @Override
+    public int hashCode() { return (id == null) ? 0 : id; }
 }

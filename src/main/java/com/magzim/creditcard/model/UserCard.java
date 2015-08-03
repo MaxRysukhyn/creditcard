@@ -1,5 +1,6 @@
 package com.magzim.creditcard.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -7,13 +8,13 @@ import java.util.Date;
  */
 public class UserCard extends BaseEntity {
 
-    private int amount;
+    protected double amount;
 
-    private String password;
+    protected String password;
 
-    private Date lastUsed = new Date();
+    protected LocalDateTime lastUsed;
 
-    private boolean blocked;
+    protected boolean blocked;
 
     private User user;
 
@@ -21,19 +22,21 @@ public class UserCard extends BaseEntity {
 
     }
 
-    public UserCard(int amount, String password, Date lastUsed, boolean blocked, User user) {
+    public UserCard(UserCard uCard) {this(uCard.getId(), uCard.getAmount(), uCard.getPassword(), uCard.getLastUsed(), uCard.isBlocked()); }
+
+    public UserCard(Integer id, double amount, String password, LocalDateTime lastUsed, boolean blocked) {
+        super(id);
         this.amount = amount;
         this.password = password;
         this.lastUsed = lastUsed;
         this.blocked = blocked;
-        this.user = user;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
@@ -45,11 +48,11 @@ public class UserCard extends BaseEntity {
         this.password = password;
     }
 
-    public Date getLastUsed() {
+    public LocalDateTime getLastUsed() {
         return lastUsed;
     }
 
-    public void setLastUsed(Date lastUsed) {
+    public void setLastUsed(LocalDateTime lastUsed) {
         this.lastUsed = lastUsed;
     }
 

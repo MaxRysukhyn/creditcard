@@ -10,9 +10,9 @@ import java.util.List;
  */
 public interface UserCardService {
 
-    void pay(UserCard card, int userId, int destinationCardId);
+    void pay(UserCard card, int userId, double amountPaid, int destinationCardId);
 
-    void addFunds (UserCard card, int userId);
+    void addFunds (UserCard card, int userId, double amountAdded);
 
     UserCard save(UserCard card, int userId);
 
