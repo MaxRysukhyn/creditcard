@@ -22,7 +22,9 @@ public interface UserCardService {
 
     UserCard update(UserCard card, int userId) throws NotFoundException;;
 
-    UserCard get(int id, int userId) throws NotFoundException;;
+    UserCard get(int id, int userId) throws NotFoundException;
+
+    UserCard getById(int id) throws NotFoundException;
 
     List<UserCard> getAll(int userId);
 

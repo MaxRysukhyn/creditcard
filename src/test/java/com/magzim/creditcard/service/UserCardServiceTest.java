@@ -56,6 +56,12 @@ public class UserCardServiceTest {
     }
 
     @Test
+    public void testGetById() {
+        UserCard testCard = service.getById(CARD1_ID);
+        MATCHER.assertEquals(CARD1, testCard);
+    }
+
+    @Test
     public void testGetAll() {
         MATCHER.assertListEquals(Arrays.asList(CARD1, CARD2), service.getAll(START_SEQ));
     }

@@ -51,6 +51,9 @@ public class UserCardServiceImpl implements UserCardService {
     }
 
     @Override
+    public UserCard getById(int id) { return  ExceptionUtil.check(repository.getById(id), id); }
+
+    @Override
     public List<UserCard> getAll(int userId) {
         return repository.getAll(userId);
     }

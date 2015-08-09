@@ -15,5 +15,7 @@ public interface UserCardRepository {
     //null if not found
     UserCard get(int id, int userId);
 
+    UserCard getById(int id);
+
     List<UserCard> getAll(int userId);
 }

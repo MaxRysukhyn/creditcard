@@ -70,6 +70,13 @@ public class JdbcUserCardRepository implements UserCardRepository{
     }
 
     @Override
+    public UserCard getById(int id) {
+        List<UserCard> userCards = jdbcTemplate.query(
+          "SELECT * FROM cards WHERE id = ?", ROW_MAPPER, id);
+        return CollectionUtils.isEmpty(userCards) ? null : DataAccessUtils.requiredSingleResult(userCards);
+    }
+
+    @Override
     public List<UserCard> getAll(int userId) {
         return jdbcTemplate.query(
                 "SELECT * FROM cards WHERE user_id=? ORDER BY id", ROW_MAPPER, userId);

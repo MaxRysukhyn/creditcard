@@ -40,6 +40,12 @@ public class MockUserCardRepositoryImpl implements UserCardRepository{
     }
 
     @Override
+    public UserCard getById(int id) {
+        LOG.info("get card {}", id);
+        return null;
+    }
+
+    @Override
     public List<UserCard> getAll(int userId) {
         LOG.info("getAll cards of user {}", userId);
         return Collections.emptyList();

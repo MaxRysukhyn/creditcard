@@ -26,6 +26,11 @@ public class UserCardRestController {
         return service.get(id, userId);
     }
 
+    public UserCard getById(int id) {
+        LOG.info("get card {}", id);
+        return service.getById(id);
+    }
+
     public void block(UserCard card) {
         int userId = LoggedUser.id();
         LOG.info("block card {} for user {}", card, userId);
