@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Arrays;
@@ -24,6 +25,7 @@ import static com.magzim.creditcard.model.BaseEntity.START_SEQ;
 })
 
 @RunWith(SpringJUnit4ClassRunner.class)
+@Sql("classpath:db/populateDB.sql")
 public class UserCardServiceTest {
 
     @Autowired
