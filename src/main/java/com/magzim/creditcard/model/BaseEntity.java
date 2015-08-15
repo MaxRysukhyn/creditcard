@@ -2,14 +2,21 @@ package com.magzim.creditcard.model;
 
 import com.magzim.creditcard.LoggerWrapper;
 
+import javax.persistence.*;
+
 /**
  * Created by max on 6/27/15.
  */
+@MappedSuperclass
+@Access(AccessType.FIELD)
 public class BaseEntity {
     protected static final LoggerWrapper LOG = LoggerWrapper.get(BaseEntity.class);
 
     public static final int START_SEQ = 1000;
 
+    @Id
+    @SequenceGenerator(name = "global_seq", sequenceName = "global_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "global_seq")
     protected Integer id;
 
     public BaseEntity() {
