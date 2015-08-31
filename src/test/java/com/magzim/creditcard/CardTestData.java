@@ -38,6 +38,12 @@ public class CardTestData {
             super(id, amount, password, lastUsed, blocked);
         }
 
+        public TestCard(double amount, String password, LocalDateTime lastUsed, boolean blocked) {
+            this(null, amount, password, lastUsed, blocked);
+        }
+
+        public UserCard asCard() {return new UserCard(this);}
+
         @Override
         public String toString() {
             return "UserCard (" +

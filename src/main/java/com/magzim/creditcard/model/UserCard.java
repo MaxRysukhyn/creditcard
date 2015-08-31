@@ -1,21 +1,41 @@
 package com.magzim.creditcard.model;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
  * Created by max on 6/27/15.
  */
+@NamedQueries({
+        @NamedQuery(name = UserCard.GET, query = "SELECT c FROM UserCard c WHERE c.id=:id AND c.user.id=:userId"),
+        @NamedQuery(name = UserCard.ALL_SORTED, query = "SELECT c FROM UserCard c WHERE c.user.id=:userId ORDER BY c.lastUsed DESC")
+})
+@Entity
+@Table(name = "CARDS")
 public class UserCard extends BaseEntity {
 
+    public static final String GET = "UserCard.get";
+    public static final String ALL_SORTED = "UserCard.getAll";
+
+    @Column(name = "amount")
     protected double amount;
 
+    @Column(name = "password", nullable = false)
+    @NotEmpty
     protected String password;
 
+    @Column(name = "lastused", nullable = false)
     protected LocalDateTime lastUsed;
 
+    @Column(name = "blocked")
     protected boolean blocked;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     public UserCard() {

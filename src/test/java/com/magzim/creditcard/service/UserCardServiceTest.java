@@ -11,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 
 import static com.magzim.creditcard.CardTestData.*;
@@ -52,13 +53,13 @@ public class UserCardServiceTest {
 
     @Test
     public void testSave() {
-        UserCard testCard = getCreated();
-        service.save(testCard, START_SEQ);
-        MATCHER.assertListEquals(Arrays.asList(CARD1, CARD2, testCard), service.getAll(START_SEQ));
+        TestCard tc = new TestCard(100.00, "pass", LocalDateTime.of(2015, 1, 8, 18, 0), false);
+        UserCard createdCard = service.save(tc.asCard(), START_SEQ);
+        tc.setId(createdCard.getId());
+        MATCHER.assertListEquals(Arrays.asList(tc, CARD2, CARD1), service.getAll(START_SEQ));
     }
 
     @Test
-    public void testGetAll() {
-        MATCHER.assertListEquals(Arrays.asList(CARD1, CARD2), service.getAll(START_SEQ));
+    public void testGetAll() { MATCHER.assertListEquals(Arrays.asList(CARD2, CARD1), service.getAll(START_SEQ));
     }
 }

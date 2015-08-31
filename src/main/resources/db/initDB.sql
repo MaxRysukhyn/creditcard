@@ -27,6 +27,7 @@ CREATE TABLE USER_ROLES
 CREATE TABLE CARDS (
   id                INTEGER PRIMARY KEY DEFAULT nextval('GLOBAL_SEQ'),
   user_id           INTEGER NOT NULL,
+  lastused          TIMESTAMP DEFAULT now(),
   amount            NUMERIC(10, 2),
   password          VARCHAR NOT NULL,
   blocked           BOOL DEFAULT FALSE,
