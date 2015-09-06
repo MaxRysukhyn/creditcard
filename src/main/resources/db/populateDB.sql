@@ -13,10 +13,10 @@ INSERT INTO user_roles (role, user_id) VALUES ('ROLE_USER', 1000);
 INSERT INTO user_roles (role, user_id) VALUES ('ROLE_ADMIN', 1001);
 
 INSERT INTO cards (user_id, lastused, amount, password)
-VALUES(1000, TIMESTAMP '2015-01-06 09:00',  3000.00, 'password');
+VALUES(1000, '2015-01-06 09:00:00',  3000.00, 'password');
 INSERT INTO cards (user_id, lastused, amount, password)
-VALUES(1000, TIMESTAMP '2015-01-06 13:00', 999999.99, '12344');
+VALUES(1000, '2015-01-06 13:00:00', 999999.99, '12344');
 INSERT INTO cards (user_id, lastused, amount, password)
-VALUES(1001, TIMESTAMP '2015-01-07 00:00', 400, 'admin');
+VALUES(1001, '2015-01-07 00:00:00', 400, 'admin');
 INSERT INTO cards (user_id, lastused, amount, password)
-VALUES(1001, TIMESTAMP '2015-01-06 12:00', 1.50, '54321');
+VALUES(1001, '2015-01-06 12:00:00', 1.50, '54321');

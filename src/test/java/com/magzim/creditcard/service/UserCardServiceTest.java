@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -24,8 +25,8 @@ import static com.magzim.creditcard.model.BaseEntity.START_SEQ;
         "classpath:spring/spring-app.xml",
         "classpath:spring/spring-db.xml"
 })
-
 @RunWith(SpringJUnit4ClassRunner.class)
+@ActiveProfiles("postgres")
 @Sql("classpath:db/populateDB.sql")
 public class UserCardServiceTest {
 
