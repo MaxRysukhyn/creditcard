@@ -57,10 +57,10 @@ public class UserCardServiceTest {
         TestCard tc = new TestCard(100.00, "pass", LocalDateTime.of(2015, 1, 8, 18, 0), false);
         UserCard createdCard = service.save(tc.asCard(), START_SEQ);
         tc.setId(createdCard.getId());
-        MATCHER.assertListEquals(Arrays.asList(tc, CARD2, CARD1), service.getAll(START_SEQ));
+        MATCHER.assertListEquals(Arrays.asList(CARD1, CARD2, tc), service.getAll(START_SEQ));
     }
 
     @Test
-    public void testGetAll() { MATCHER.assertListEquals(Arrays.asList(CARD2, CARD1), service.getAll(START_SEQ));
+    public void testGetAll() { MATCHER.assertListEquals(Arrays.asList(CARD1, CARD2), service.getAll(START_SEQ));
     }
 }
