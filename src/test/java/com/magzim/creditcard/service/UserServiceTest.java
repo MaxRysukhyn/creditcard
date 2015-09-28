@@ -30,7 +30,7 @@ import static com.magzim.creditcard.UserTestData.*;
         "classpath:spring/spring-app.xml",
         "classpath:spring/spring-db.xml"
 })
-@ActiveProfiles("postgres")
+@ActiveProfiles({"postgres", "datajpa"})
 @RunWith(SpringJUnit4ClassRunner.class)
 public class UserServiceTest {
 
