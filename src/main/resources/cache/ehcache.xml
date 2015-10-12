@@ -25,4 +25,7 @@
            diskExpiryThreadIntervalSeconds="1"
            memoryStoreEvictionPolicy="LRU"/>
 
+    <cache name="com.magzim.creditcard.model.User"
+           maxElementsInMemory="1000" />
+
 </ehcache>
